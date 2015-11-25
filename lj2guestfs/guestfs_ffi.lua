@@ -2461,6 +2461,8 @@ extern  char **guestfs_zgrepi (guestfs_h *g, const char *regex, const char *path
   GUESTFS_DEPRECATED_BY ("grep");
 --]]
 
+require("lj2guestfs.guestfs_constants")
+
 local Lib_guestfs = ffi.load("guestfs", true)
 
 local exports = {
