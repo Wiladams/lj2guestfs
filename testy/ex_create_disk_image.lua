@@ -24,8 +24,7 @@ local function main (argc, argv)
   end
 
   -- Add the disk image to libguestfs.
-  ---[[
-
+  -- you must be very specific with the types of optional arguments
   if (gfs.guestfs_add_drive_opts (g, "disk.img",
                               int(gfs.GUESTFS_ADD_DRIVE_OPTS_FORMAT), ffi.cast("const char *","raw"), -- raw format
                               int(gfs.GUESTFS_ADD_DRIVE_OPTS_READONLY), int(0), -- for write
@@ -33,7 +32,7 @@ local function main (argc, argv)
        == -1) then
      error();
   end
---]]
+
   -- Run the libguestfs back-end.
   if (gfs.guestfs_launch (g) == -1) then
      error();
