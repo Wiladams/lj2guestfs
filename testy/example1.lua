@@ -5,12 +5,15 @@
  package.path = "../?.lua;"..package.path
 
  local gfs = require("lj2guestfs.guestfs_ffi")
- 
+ print("gfs: ", gfs)
+
 -- first, create a guestfs context
 local ctx = gfs.guestfs_create ();
+print("ctx: ", ctx)
 
 -- add a disk image to it
-gfs.guestfs_add_drive_ro (ctx, "disk.img");
+local res = gfs.guestfs_add_drive_ro (ctx, "disk.img");
+print("add_drive_ro, res: ", res);
 
 -- launch that disk image
 gfs.guestfs_launch (ctx);
